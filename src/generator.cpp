@@ -15,6 +15,9 @@ namespace pjs
 		generateMain(projectInfo);
 		generateMakefile(projectInfo);
 
+		// Generate build folder
+		std::filesystem::create_directory(projectInfo.path / "build");
+
 		// Generate gitignore
 		std::ofstream(projectInfo.path / ".gitignore") << "/build" << std::endl;
 
