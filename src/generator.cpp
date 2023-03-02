@@ -36,7 +36,7 @@ namespace pjs
 			 << "{" << std::endl
 			 << "\tstd::cout << \"Hello world!\" << std::endl;" << std::endl
 			 << std::endl
-			 << "return 0;" << std::endl
+			 << "\treturn 0;" << std::endl
 			 << "}" << std::endl;
 		main.close();
 	}
