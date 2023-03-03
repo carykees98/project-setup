@@ -6,11 +6,9 @@
 
 namespace pjs
 {
+	void createProject(const Project &projectInfo);
 
-	void createProject(Project &projectInfo);
+	void generateMain(const Project &projectInfo);
 
-	void generateMain(Project &projectInfo);
-
-	void generateMakefile(Project &projectInfo);
-
+	void generateMakefile(const Project &projectInfo);
 } // namespace pjs

@@ -6,31 +6,42 @@
 #include <string>
 
 #include "project.h"
+#include "logging.h"
 
 namespace pjs
 {
-
-	void createProject(Project &projectInfo)
+	void createProject(const Project &projectInfo)
 	{
+		std::cerr << "Project Name: " << projectInfo.name << std::endl;
+
 		generateMain(projectInfo);
 		generateMakefile(projectInfo);
 
 		// Generate build folder
+		logDirectoryCreation("build");
 		std::filesystem::create_directory(projectInfo.path / "build");
 
 		// Generate gitignore
+		logFileGeneration(".gitignore");
 		std::ofstream(projectInfo.path / ".gitignore") << "/build" << std::endl;
 
 		// Generate license
+		logFileGeneration("license");
 		std::ofstream(projectInfo.path / "license");
 
 		// Generate readme.md
+		logFileGeneration("readme.md");
 		std::ofstream(projectInfo.path / "readme.md") << "# " << projectInfo.name << std::endl;
+
+		std::cerr << "All done!" << std::endl;
 	}
 
-	void generateMain(Project &projectInfo)
+	void generateMain(const Project &projectInfo)
 	{
+		logDirectoryCreation("src");
 		std::filesystem::create_directory(projectInfo.path / "src");
+
+		logFileGeneration("main.cpp");
 		std::ofstream main(projectInfo.path / "src" / "main.cpp");
 
 		main << "#include <iostream>" << std::endl
@@ -44,8 +55,9 @@ namespace pjs
 		main.close();
 	}
 
-	void generateMakefile(Project &projectInfo)
+	void generateMakefile(const Project &projectInfo)
 	{
+		logFileGeneration("makefile");
 		std::ofstream makefile(projectInfo.path / "makefile");
 
 		makefile << "projectName = " << projectInfo.name << std::endl
@@ -67,5 +79,4 @@ namespace pjs
 
 		makefile.close();
 	}
-
 } // namespace pjs

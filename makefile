@@ -4,7 +4,7 @@ cppStandard = c++17
 sourceFolder = src/
 output = build/$(projectName)
 
-objects = help.o generator.o
+objects = help.o generator.o logging.o
 main = $(sourceFolder)main.cpp
 
 all: $(project-name)-main clean
@@ -17,6 +17,9 @@ help.o: $(sourceFolder)help.cpp $(sourceFolder)help.h
 
 generator.o: $(sourceFolder)generator.cpp $(sourceFolder)generator.h
 	g++ -c -std=$(cppStandard) $(sourceFolder)generator.cpp
+
+logging.o: $(sourceFolder)logging.cpp $(sourceFolder)logging.h
+	g++ -c -std=$(cppStandard) $(sourceFolder)logging.cpp
 
 clean: 
 	rm *.o
