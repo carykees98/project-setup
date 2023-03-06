@@ -1,6 +1,6 @@
 # Project Setup
 
-C++ program to create c++ project folders. 
+C++ program to create C++ project folders. 
 
 ## Usage
 
