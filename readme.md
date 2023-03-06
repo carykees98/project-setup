@@ -23,6 +23,7 @@ The file structure created is:
 ├── license
 ├── makefile
 ├── readme.md
+├── build
 └── src
     └── main.cpp
 ```
